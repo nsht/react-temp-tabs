@@ -40,3 +40,45 @@ pre {
   align-items: center;
   justify-content: center;
 }
+
+.title{
+  grid-column-start:1;
+  grid-column-end: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title span{
+  font-size: 5em;
+  font-family: 'Lobster';
+}
+
+.site-input form input{
+  font-size: 1.5em;
+  width: 98%
+}
+.site-input form button{
+  font-size: 1.4em;
+  width:100%
+}
+
+.time-selector{
+  display: flex;
+  flex-direction: row;
+}
+
+.time-selector span {
+  border: solid #67c5ff 1px;
+  padding: 5px;
+  cursor: pointer;
+}
+.time-selector span:hover {
+  background: #67c5ff;
+}
+
+.selected{
+  background: #67c5ff;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');

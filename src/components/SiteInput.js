@@ -1,28 +1,46 @@
-import React from 'react';
+import React from "react";
 
+class SiteInput extends React.Component {
+  urlInput = React.createRef();
+  FiveminuteRef = React.createRef();
+  FiveminuteRef = React.createRef();
+  FiveminuteRef = React.createRef();
+  FiveminuteRef = React.createRef();
 
-class SiteInput extends React.Component{
-    urlInput = React.createRef();
-    handleSubmit = e =>{
-        // handle submit function in app which gets the time
-        // from the timeselector componenent
-        // then starts the timer display
-        e.preventDefault();
-        console.log(this.urlInput.current.value);
-        var win = window.open(this.urlInput.current.value, '_blank');
-        win.focus();
-        setTimeout(function () { win.close();}, 3000);
-    }
-    render(){
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <input type="url" placeholder="Enter Url" ref={this.urlInput}></input>
-                <button>Open Url</button>
-            </form>
-        )
+  handleSubmit = e => {
+    // handle submit function in app which gets the time
+    // from the timeselector componenent
+    // then starts the timer display
+    e.preventDefault();
+    console.log(this.urlInput.current.value);
+    var win = window.open(this.urlInput.current.value, "_blank");
+    win.focus();
+    setTimeout(function() {
+      win.close();
+      alert("Tab Closed");
+    }, this.props.minutes * 60000);
+  };
 
+  handleClick = (e, data) => {
+    // access to e.target here
+    console.log(data);
+    this.props.setTime(data);
+};
 
-    }
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input type="url" placeholder="Enter Url" ref={this.urlInput} />
+        <div className="time-selector">
+          <span onClick={((e) => this.handleClick(e, 5))} className={this.props.minutes=== 5 ? 'selected':''}>5 Minutes</span>
+          <span onClick={((e) => this.handleClick(e, 10))} className={this.props.minutes=== 10 ? 'selected':''}>10 Minutes</span>
+          <span onClick={((e) => this.handleClick(e, 15))} className={this.props.minutes=== 15 ? 'selected':''}>15 Minutes</span>
+          <span onClick={((e) => this.handleClick(e, 30))} className={this.props.minutes=== 30 ? 'selected':''}>30 Minutes</span>
+        </div>
+        <button>{`Open Url for ${this.props.minutes} minutes`}</button>
+      </form>
+    );
+  }
 }
 
 export default SiteInput;
