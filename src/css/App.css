@@ -81,4 +81,13 @@ pre {
   background: #67c5ff;
 }
 
+
+.timer{
+  grid-column-start: 2;
+  grid-row-start: 3;
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Lobster');
