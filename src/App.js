@@ -32,6 +32,11 @@ class App extends Component {
       if(seconds<10){
         secondsString = `0${seconds}`
       }
+      if(minutes === 0 && seconds <= 10 && (seconds%2 === 0)){
+        const audio = this.notificationAudio.current;
+        audio.currentTime = 0;
+        audio.play();
+      }
       document.title = `${minutesString}:${secondsString}`;
     }
     return <span />;
@@ -39,6 +44,8 @@ class App extends Component {
 
   countdownRef = React.createRef();
   countdownRef2 = React.createRef();
+  notificationAudio = React.createRef();
+
 
   render() {
     return (
@@ -66,6 +73,8 @@ class App extends Component {
             renderer={this.customRenderer}
           />
         </div>
+        <audio ref={this.notificationAudio} src={window.location.origin + "/sound/notification.mp3"}></audio>
+
       </div>
     );
   }
