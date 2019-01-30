@@ -17,13 +17,11 @@ class SiteInput extends React.Component {
     win.focus();
     setTimeout(function() {
       win.close();
-      alert("Tab Closed");
     }, this.props.minutes * 60000);
   };
 
   handleClick = (e, data) => {
     // access to e.target here
-    console.log(data);
     this.props.setTime(data);
   };
 
